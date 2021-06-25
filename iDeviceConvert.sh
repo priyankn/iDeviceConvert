@@ -12,6 +12,8 @@
 # We change the UIDeviceFamily (Number or Array - iOS) which specifies the underlying hardware type on which this app is designed to run. 
 #  1 - (Default) The app runs on iPhone and iPod touch devices
 #  2 - The app runs on iPad devices
+#
+# Some apps might declare UISupportedDevices, we will just remove it.
 ###################
 
 
@@ -76,6 +78,14 @@ elif [ $p_out == "[2]" ]; then
 elif [ $p_out == "[1]" ]; then
 	echo "[+] Detected iPhone, Insert for iPad" 
 	plutil -insert UIDeviceFamily.0 -integer "2" tmp_d/Payload/*.app/Info.plist
+fi
+
+# Check for UISupportedDevices
+
+p_out_ui=$(plutil -remove UISupportedDevices tmp_d/Payload/*.app/Info.plist)
+
+if [ $? == 0 ]; then
+        echo "[+] Detected UISupportedDevices, removing this key"
 fi
 
 #plutil -extract UIDeviceFamily xml1 -o - tmp_d/Payload/*.app/Info.plist
