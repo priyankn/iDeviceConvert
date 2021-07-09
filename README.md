@@ -18,7 +18,7 @@ $ ./iDeviceConvert.sh Visitors.ipa
 [2]
 [+] Detected IPad, Insert for iPhone
 [+] Detected UISupportedDevices, removing this key
-[+] Done. Patched as updated_isitors.ipa
+[+] Done. Patched as updated_Visitors.ipa
 ```
 
 ## How it works
